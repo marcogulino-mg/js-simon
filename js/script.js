@@ -61,10 +61,14 @@ form.addEventListener("submit", (e) => {
 
   //Controllo i numeri
   let stringNumbs = "";
+  let counter = 1;
+
   for (let j = 0; j < generatedNum.length; j++) {
-    if (parseInt(inputNumList[j].value) === generatedNum[j]) {
-      result.innerHTML = `Hai indovinato ${j + 1} numeri. `;
-      stringNumbs += inputNumList[j].value + " ";
+    for (let z = 0; z < inputNumList.length; z++) {
+      if (parseInt(inputNumList[z].value) === generatedNum[j]) {
+        result.innerHTML = `Hai indovinato ${counter++} numeri. `;
+        stringNumbs += generatedNum[j] + " ";
+      }
     }
   }
 
