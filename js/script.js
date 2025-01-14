@@ -5,7 +5,7 @@ const countDown = document.getElementById("countdown");
 const result = document.getElementById("message");
 
 //VARs
-let seconds = 30;
+let seconds = 3;
 const generatedNum = [];
 
 //Elementi del DOM in INPUT
@@ -78,8 +78,15 @@ form.addEventListener("submit", (e) => {
   let counter = 1;
 
   for (let j = 0; j < generatedNum.length; j++) {
+    //Variabile che controlla la presenza di doppioni
+    let duplicate = 0;
+
     for (let z = 0; z < inputNumList.length; z++) {
-      if (parseInt(inputNumList[z].value) === generatedNum[j]) {
+      if (
+        parseInt(inputNumList[z].value) === generatedNum[j] &&
+        duplicate < 1
+      ) {
+        duplicate++;
         result.innerHTML = `Hai indovinato ${counter++} numeri. `;
         stringNumbs += generatedNum[j] + " ";
       }
