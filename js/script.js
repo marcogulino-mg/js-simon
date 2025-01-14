@@ -1,7 +1,7 @@
 //Elementi del DOM in OUTPUT
 const numList = document.getElementById("numbers-list");
 const countDown = document.getElementById("countdown");
-let seconds = 5;
+let seconds = 30;
 
 /*Funzione che genera un numero casuale
 per scegliere quale indice prendere dall'array*/
