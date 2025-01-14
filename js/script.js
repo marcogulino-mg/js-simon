@@ -1,7 +1,11 @@
 //Elementi del DOM in OUTPUT
 const numList = document.getElementById("numbers-list");
+const message = document.getElementById("instructions");
 const countDown = document.getElementById("countdown");
 let seconds = 30;
+
+//Elementi del DOM in INPUT
+const inputNum = document.getElementById("answers-form");
 
 /*Funzione che genera un numero casuale
 per scegliere quale indice prendere dall'array*/
@@ -23,8 +27,15 @@ const timer = setInterval(() => {
   seconds--;
 
   if (seconds < 0) {
+    //Blocco il setInterval
     clearInterval(timer);
-    countDown.innerHTML = "";
-  }
 
+    //Svuoto la parte HTML
+    countDown.innerHTML = "";
+    numList.innerHTML = "";
+
+    //Mostro le caselle d'input e cambio il testo di "instructions"
+    message.innerHTML = "Inserisci i numeri che hai memorizzato";
+    inputNum.className = "d-block";
+  }
 }, 1000);
