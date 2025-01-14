@@ -5,7 +5,7 @@ const countDown = document.getElementById("countdown");
 const result = document.getElementById("message");
 
 //VARs
-let seconds = 5;
+let seconds = 30;
 const generatedNum = [];
 
 //Elementi del DOM in INPUT
@@ -14,14 +14,28 @@ const inputNumList = document.getElementsByClassName("form-control");
 const form = document.querySelector("form");
 
 /*Funzione che genera un numero casuale
-per scegliere quale indice prendere dall'array*/
-function randomNum(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+e lo rigenera se è gia presente in un array*/
+function randomNum(min, max, arrayNum) {
+  let randNum = Math.floor(Math.random() * (max - min + 1) + min);
+  let check = false;
+
+  do {
+    for (let i = 0; i < arrayNum.length; i++) {
+      if (arrayNum[i] == randNum) {
+        randNum = Math.floor(Math.random() * (max - min + 1) + min);
+        check = true;
+      } else {
+        check = false;
+      }
+    }
+  } while (check);
+
+  return randNum;
 }
 
 //Genero i 5 numeri casuali richiesti
 for (let i = 0; i < 5; i++) {
-  let randomNumber = randomNum(1, 50);
+  let randomNumber = randomNum(1, 50, generatedNum);
 
   //Salvo una copia del numero in un array
   generatedNum.push(randomNumber);
